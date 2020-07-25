@@ -54,7 +54,8 @@ class SignIn extends React.Component {
           />
           <div className='buttons'>
             <CustomButton type='submit'> Sign in </CustomButton>
-            <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+            <CustomButton onClick={signInWithGoogle} isGoogleSignIn> {// isGoogleSignIn will atomatically pass value true if we don't pass a value to it.
+            }
               Sign in with Google
             </CustomButton>
           </div>
