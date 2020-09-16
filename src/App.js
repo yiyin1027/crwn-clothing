@@ -46,13 +46,29 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <Switch>
-          <Route exact path="/crwn-clothing/" component={HomePage} />
+        {/* <Switch>
+        <Route exact path="/crwn-clothing/" component={HomePage} />
           <Route exact path="/crwn-clothing/shop" component={ShopPage} />
           <Route exact path="/crwn-clothing/checkout" component={CheckoutPage} />
           <Route
             exact
             path="/crwn-clothing/signin"
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to="/" />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          />
+        </Switch> */}
+        <Switch>
+        <Route exact path="/" component={HomePage} />
+          <Route exact path="/shop" component={ShopPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
+          <Route
+            exact
+            path="/signin"
             render={() =>
               this.props.currentUser ? (
                 <Redirect to="/" />
