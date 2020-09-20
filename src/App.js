@@ -1,19 +1,19 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import {createStructuredSelector} from 'reselect'
+import { createStructuredSelector } from "reselect";
 
 import "./App.css";
 
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
-import CheckoutPage from './pages/checkout/checkout'
+import CheckoutPage from "./pages/checkout/checkout";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 import { setCurrentUser } from "./redux/user/user.action";
-import {selectCurrentUser} from './redux/user/user.selectors';
+import { selectCurrentUser } from "./redux/user/user.selectors";
 
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 
@@ -46,24 +46,8 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        {/* <Switch>
-        <Route exact path="/crwn-clothing/" component={HomePage} />
-          <Route exact path="/crwn-clothing/shop" component={ShopPage} />
-          <Route exact path="/crwn-clothing/checkout" component={CheckoutPage} />
-          <Route
-            exact
-            path="/crwn-clothing/signin"
-            render={() =>
-              this.props.currentUser ? (
-                <Redirect to="/" />
-              ) : (
-                <SignInAndSignUpPage />
-              )
-            }
-          />
-        </Switch> */}
         <Switch>
-        <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
           <Route exact path="/checkout" component={CheckoutPage} />
           <Route
@@ -84,8 +68,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
-})
+  currentUser: selectCurrentUser,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
