@@ -3,9 +3,9 @@ import React from 'react';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-import {auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
-import './sign-in.component.scss';
+import './sign-in.styles.scss';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -17,19 +17,15 @@ class SignIn extends React.Component {
     };
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
 
-    const {email, password} = this.state;
+    const { email, password } = this.state;
 
     try {
-      (async () => {
-        await auth.signInWithEmailAndPassword(email, password);
-        console.log("await");
-        console.log("what happen");
-        this.setState({ email: '', password: '' });
-       })();
-    } catch (error){
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: '', password: '' });
+    } catch (error) {
       console.log(error);
     }
   };
@@ -57,7 +53,7 @@ class SignIn extends React.Component {
           />
           <FormInput
             name='password'
-            type='password' 
+            type='password'
             value={this.state.password}
             handleChange={this.handleChange}
             label='password'
@@ -65,8 +61,7 @@ class SignIn extends React.Component {
           />
           <div className='buttons'>
             <CustomButton type='submit'> Sign in </CustomButton>
-            <CustomButton onClick={signInWithGoogle} isGoogleSignIn> {// isGoogleSignIn will atomatically pass value true if we don't pass a value to it.
-            }
+            <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
               Sign in with Google
             </CustomButton>
           </div>

@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  sections : [
+  sections: [
     {
       title: 'hats',
       imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
@@ -40,6 +40,6 @@ const directoryReducer = (state = INITIAL_STATE, action) => {
     default:
       return state;
   }
-}
+};
 
 export default directoryReducer;
